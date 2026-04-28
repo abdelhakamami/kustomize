@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+  
+resources:
+- ../../base
+- envs
+
+
+patches:
+- path: ./patches/ingress-patch.yaml
+  target:
+    group: networking.k8s.io
+    kind: Ingress
+    version: v1
+- path: ./patches/deployment-patch.yaml
+  target:
+    kind: Deployment
+    name: test-be
+    version: v1
+- path: ./patches/service-patch.yaml
+  target:
+    kind: Service
+    name: test-be
+    version: v1
+
+images:
+- name: test-be
+  newTag: 99421fe

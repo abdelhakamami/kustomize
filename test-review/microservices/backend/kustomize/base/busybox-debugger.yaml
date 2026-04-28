@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: debugger-pod-process
+  namespace: monitoring-app
+spec:
+  containers:
+  - name: mypod
+    image: mcr.microsoft.com/oss/nginx/nginx:1.17.3-alpine
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/blob"
+      name: faiss-volume
+      readOnly: false
+  volumes:
+    - name: faiss-volume
+      persistentVolumeClaim:
+        claimName: faiss-pvc

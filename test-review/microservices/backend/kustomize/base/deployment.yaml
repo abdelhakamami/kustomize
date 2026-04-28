@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: test-be
+  name: test-be
+  labels:
+    app: test-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-be
+  template:
+    metadata:
+      labels:
+        app: test-be
+    spec:
+      containers:
+      - name: test-be
+        image: < ADD YOUR IMAGE REPO HERE >
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always
+        volumeMounts:
+            - mountPath: /mnt/data/summary
+              name: summary-volume
+      volumes:
+        - name: summary-volume
+          persistentVolumeClaim:
+            claimName: pdf-summary
+        

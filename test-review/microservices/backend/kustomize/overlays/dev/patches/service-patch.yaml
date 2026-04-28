@@ -1,0 +1,4 @@
+
+- op: replace
+  path: /metadata/annotations/app.access.url
+  value: https://test-review-be.host.com

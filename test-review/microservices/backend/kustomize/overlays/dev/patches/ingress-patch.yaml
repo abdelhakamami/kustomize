@@ -1,0 +1,23 @@
+- op: replace 
+  path: /spec/rules/0/host
+  value: test-review-be.host.com
+
+- op: replace
+  path: /spec/rules/0/http/paths
+  value:
+    - path: /
+      pathType: Prefix
+      backend:
+        service:
+          name: devopsiq-processor
+          port:
+            number: 5000
+
+- op: replace 
+  path: /spec/rules/0/http/paths/0/backend/service/name
+  value: test-be
+
+- op: replace 
+  path: /spec/rules/0/http/paths/0/backend/service/port/number
+  value:  5000
+

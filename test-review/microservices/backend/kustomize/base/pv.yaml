@@ -1,0 +1,13 @@
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pdf-summary
+  namespace: test-be
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: azurefile-csi
+  resources:
+    requests:
+      storage: 1Gi

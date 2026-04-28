@@ -1,0 +1,18 @@
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: developementRegistry.azurecr.io/test-be
+
+- op: add
+  path: /spec/template/spec/containers/0/envFrom
+  value:
+    - configMapRef:
+        name: env-configs
+    - secretRef:
+        name: mongodb-secrets
+
+- op: add 
+  path: /spec/revisionHistoryLimitgit p
+  value: 3
+
+
